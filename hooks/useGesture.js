@@ -10,9 +10,9 @@ let currentIndex = {
 let gesture = [];
 let theme;
 
-const shuffleDataImages = () => {
-  male : shuffle(dataImages.male);
-  female : shuffle(dataImages.female);
+const shuffleDataImages  = {
+  male : shuffle(dataImages.male),
+  female : shuffle(dataImages.female),
 }
 
 const useGesture = () => {
