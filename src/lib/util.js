@@ -20,3 +20,12 @@ export const shuffle = (array) => {
 
   return array;
 }
+
+export const GESTURE_STATES = {
+  EMPTY: "empty",
+  REGISTER: "register",
+  READY: "ready",
+  MATCH: "match",
+  ENDING: "ending",
+  // ... (tambahkan state lainnya jika diperlukan)
+};

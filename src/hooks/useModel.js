@@ -7,7 +7,7 @@ let currentIndex = {
   female : -1,
 }
 
-let gesture = [];
+let model = [];
 let theme;
 
 const shuffleDataImages  = {
@@ -15,11 +15,11 @@ const shuffleDataImages  = {
   female : shuffle(dataImages.female),
 }
 
-const useGesture = () => {
-  const [currentGesture, setCurrentGesture] = useState();
-  const [gestureleft, setGestureleft] = useState(10);
+const useModel = () => {
+  const [currentModel, setCurrentModel] = useState();
+  const [modelLeft, setModelLeft] = useState(10);
 
-  const hasGesture = gestureleft > 0;
+  const hasModel = modelLeft > 0;
   const hasTheme = theme !== undefined;
 
   const provideThemes = Object.keys(shuffleDataImages);
@@ -47,37 +47,39 @@ const useGesture = () => {
     console.log('resetting theme', theme);
   };
 
-  const gestureNext = () => {
+  const modelNext = () => {
     currentIndex[theme] += 1;
-    setCurrentGesture(gesture[currentIndex[theme]]);
-    setGestureleft(gestureleft - 1);
+    setCurrentModel(model[currentIndex[theme]]);
+    setModelLeft(modelLeft - 1);
   }
 
-  const getGesture = () => {
-    gesture = shuffleDataImages[theme];
+  const getModel = () => {
+    model = shuffleDataImages[theme];
   };
 
-  const gestureIsEmpty = currentIndex[theme] === gesture.length - 1;
+  const modelIsEmpty = currentIndex[theme] === model.length - 1;
   useEffect(() => {
-    if (gestureIsEmpty) {
+    if (modelIsEmpty) {
       currentIndex[theme] = -1;
       shuffleDataImages[theme] = shuffle(dataImages[theme]);
     }
-  }, [gestureIsEmpty]);
+  }, [modelIsEmpty]);
 
   return {
-    currentGesture,
-    gestureNext,
+    currentModel,
+    modelNext,
     getTheme,
-    getGesture,
+    getModel,
     currentIndex,
-    gestureleft,
+    modelLeft,
     theme,
-    setGestureleft,
-    hasGesture,
+    setModelLeft,
+    hasModel,
     provideThemes,
     res,
     chooseTheme,
     resetTheme,
   }
 };
+
+export default useModel;
